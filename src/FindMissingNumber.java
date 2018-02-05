@@ -1,9 +1,11 @@
 /**
  * Created by Vishwas on 06-02-2018.
- * https://leetcode.com/problems/missing-number/description/
  */
 public class FindMissingNumber {
 
+    /**
+     * https://leetcode.com/problems/missing-number/description/
+     */
     public int missingNumberBetweenZeroAndMax(int[] nums) {
         int sum = 0;
         int min = 0, max = 0;
