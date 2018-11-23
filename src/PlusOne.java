@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by Vishwas on 30-01-2018.
  * https://leetcode.com/problems/plus-one/description/
@@ -6,7 +8,8 @@ public class PlusOne {
 
     public static void main(String[] args) {
         PlusOne plusOne = new PlusOne();
-        plusOne.plusOne(new int[] {8,9,9});
+        int[] res = plusOne.plusOne(new int[]{});
+        System.out.println("adsf");
     }
 
     public int[] plusOne(int[] digits) {
@@ -17,20 +20,27 @@ public class PlusOne {
                 carryForward = sumInInt / 10;
                 digits[idx] = Math.abs(10 - sumInInt);
             } else {
+                carryForward = 0;
                 digits[idx] = sumInInt;
-                return digits;
+                break;
             }
         }
-        if(carryForward > 0) {
+        if (carryForward > 0) {
             //now we need another array with carry forward at its first place
             int[] newDigits = new int[digits.length + 1];
             newDigits[0] = carryForward;
-            for(int idx = 0; idx < digits.length; idx++) {
+            for (int idx = 0; idx < digits.length; idx++) {
                 newDigits[idx + 1] = digits[idx];
             }
-            return newDigits;
+            digits = newDigits;
         }
-        return null;
+        int limit = 0;
+        while (limit < digits.length && digits[limit] == 0)
+            limit++;
+        if (limit > 0)
+            return Arrays.copyOfRange(digits, limit, digits.length);
+        else
+            return digits;
     }
 
 }
